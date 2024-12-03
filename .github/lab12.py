@@ -11,16 +11,12 @@ dictionary_morse_code = {
 }
 
 
-def argument(sentence):
-    return ''.join([char for char in sentence.lower() if char in dictionary_morse_code or char == ' '])
 
-def convert_to_morse(sentence):
-    list = []
-    for word in sentence:
-        word.split()
-        m_ = [dictionary_morse_code[char] for char in word]
-        list.append(' '.join(m_))  
-    return list
+def clear_sentence(sentence):
+    return ''.join(c for c in sentence.lower() if c in dictionary_morse_code or c == ' ')
+
+def to_morse(sentence):
+    return [' '.join(dictionary_morse_code[char] for char in word) for word in sentence.split()]
 
 def format_morse(list):
     return '  '.join(list)
@@ -28,13 +24,13 @@ def format_morse(list):
 def main():
     sentence = input("Enter a sentence: ")
     argument = argument(sentence)
-    morse_list = convert_to_morse(argument)
+    morse_list = to_morse(argument)
     m_formatted = format_morse(morse_list)
     print("\nMorse Code Equivalent:")
     print(m_formatted)
 
 if __name__ == "_main_":
-    main()
+    main()fiNL
 
 
 
